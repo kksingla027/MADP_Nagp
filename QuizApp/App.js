@@ -5,7 +5,7 @@ import {createStackNavigator} from 'react-navigation';
 import {LoginScreen, QuizScreen, ScoreScreen, FeedbackScreen} from './src';
 
 
-class HomeScreen extends React.Component{
+class HomeScreen extends React.Component{{}
   static navigationOptions = {
     title: 'Home',
   };
