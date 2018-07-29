@@ -1,4 +1,5 @@
 {
-  "name": "QuizApp",
-  "displayName": "QuizApp"
+  "expo": {
+    "sdkVersion": "27.0.0"
+  }
 }

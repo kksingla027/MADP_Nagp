@@ -1,57 +1,86 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import {createStackNavigator} from 'react-navigation';
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import {LoginScreen, QuizScreen, ScoreScreen, FeedbackScreen} from './src';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-export default class App extends Component<{}> {
+class HomeScreen extends React.Component{
+  static navigationOptions = {
+    title: 'Home',
+  };
+  render(){
+    return(
+      <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+        <Button title="Login" onPress={()=>this.props.navigation.navigate('Login')}/>
+        <Button title="Start Quiz" onPress={()=>this.props.navigation.navigate('Quiz')}/>
+      </View>
+      
+    );
+  }
+}
+
+class DetailsScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+        <Button title="Back" onPress={()=>this.props.navigation.goBack()} />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+const RootStack = createStackNavigator(
+  {
+    Home:{
+      screen: HomeScreen
+    },
+    Details:{
+      screen: DetailsScreen
+    },
+    Login: {
+      screen: LoginScreen
+    },
+    Quiz:{
+      screen: QuizScreen
+    },
+    Feedback:{
+      screen:FeedbackScreen
+    },
+    Score:{
+      screen: ScoreScreen
+    }
+
+
+  },{
+    initialRouteName : 'Home'
+  }
+);
+
+export default class App extends React.Component{
+  render(){
+    return <RootStack/>
+  }
+}
+
+// export default class App extends React.Component {
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <Text>Open up App.js to start working on your app!</Text>
+//         <Text>Changes you make will automatically reload.</Text>
+//         <Text>Shake your phone to open the developer menu.</Text>
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
