@@ -1,5 +1,12 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "27.0.0",
+    "name":"assignment-kamal-nagp",
+    "android":{
+      "package":"com.johncy.myapp",
+       "versionCode":1 , 
+       "icon":"./quiz.png"
+           }
   }
 }
+
